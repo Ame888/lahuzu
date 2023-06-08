@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Forum</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+      <!-- style css -->
+      <link rel="stylesheet" type="text/css" href="static/css/style.css">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="static/css/responsive.css">
+      <!-- fevicon -->
+      <link rel="icon" href="static/static/images/fevicon.png" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="static/css/jquery.mCustomScrollbar.min.css">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.0.3/static/css/font-awesome.css">
+      <!-- fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Poppins:400,700&display=swap" rel="stylesheet">
+      <!-- owl stylesheets --> 
+      <link rel="stylesheet" href="static/css/owl.carousel.min.css">
+      <link rel="stylesoeet" href="static/css/owl.theme.default.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+   </head>
+   <body>
+     <!--header section start -->
+      <div class="header_section">
+         <div class="container-fluid ">
+            <div class="row">
+               <div class="col-sm-2 col-6">
+                  <a class="logo" href="index.html"><img src="static/static/images/logo.png"></a>
+               </div>
+               <div class="col-sm-8 col-6">
+                  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav">
+                     <li class="nav-item active">
+                        <a class="nav-link" href="index.html">首页</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="jieshao.html">简要介绍</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="qushi.html">时间趋势</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link active" href="ciyun.html">词云分析</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="qinggan.html">情感分析</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="zhuti.html">主题聚类</a>
+                     </li>
+                  </ul>
+               </div>
+            </nav>
+               </div>
+               <div class="col-sm-2">
+                  <div class="header_social_icon">
+
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- header section end -->
+     <div id="container1" style="height: 700%">
+         <h1 class="improve_taital">拉祜族情感分析</h1>
+            <p class="improve_text">积极情绪占比为68%左右</p>
+            <p class="improve_text">消极情绪占比不到8%</p>
+     </div>
+      <div id="container" style="height: 500%"></div>
+          <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
+          <script type="text/javascript">
+            var dom = document.getElementById('container');
+            var myChart = echarts.init(dom, null, {
+              renderer: 'canvas',
+              useDirtyRect: false
+            });
+            var app = {};
+
+            var option;
+
+            option = {
+          tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b}: {c} ({d}%)'
+          },
+          legend: {
+            data: [
+              'Direct',
+              'Marketing',
+              'Search Engine',
+              'Email',
+              'Union Ads',
+              'Video Ads',
+              'Baidu',
+              'Google',
+              'Bing',
+              'Others'
+            ]
+          },
+          series: [
+            {
+              name: 'Access From',
+              type: 'pie',
+              selectedMode: 'single',
+              radius: [0, '30%'],
+              label: {
+                position: 'inner',
+                fontSize: 14
+              },
+              labelLine: {
+                show: false
+              },
+              data: [
+                { value: 316, name: '积极情绪' },
+                { value: 36, name: '消极情绪' },
+                { value: 107, name: '中性情绪', selected: true }
+              ]
+            },
+            {
+              name: 'Access From',
+              type: 'pie',
+              radius: ['45%', '60%'],
+              labelLine: {
+                length: 30
+              },
+              label: {
+                formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+                backgroundColor: '#F6F8FC',
+                borderColor: '#8C8D8E',
+                borderWidth: 1,
+                borderRadius: 4,
+                rich: {
+                  a: {
+                    color: '#6E7079',
+                    lineHeight: 22,
+                    align: 'center'
+                  },
+                  hr: {
+                    borderColor: '#8C8D8E',
+                    width: '100%',
+                    borderWidth: 1,
+                    height: 0
+                  },
+                  b: {
+                    color: '#4C5058',
+                    fontSize: 14,
+                    fontWeight: 'bold',
+                    lineHeight: 33
+                  },
+                  per: {
+                    color: '#fff',
+                    backgroundColor: '#4C5058',
+                    padding: [3, 4],
+                    borderRadius: 4
+                  }
+                }
+              },
+              data: [
+                { value: 109, name: '一般积极情绪' },
+                { value: 79, name: '中度积极情绪' },
+                { value: 128, name: '高度积极情绪' },
+                { value: 24, name: '一般消极情绪' },
+                { value: 3, name: '中度消极情绪' },
+                { value: 5, name: '高度消极情绪' },
+                { value: 107, name: '中性情绪' },
+              ]
+            }
+          ]
+        };
+
+            if (option && typeof option === 'object') {
+              myChart.setOption(option);
+            }
+
+            window.addEventListener('resize', myChart.resize);
+          </script>
+
+      </div>
+      <!-- Javascript files-->
+      <script src="static/js/jquery.min.js"></script>
+      <script src="static/js/popper.min.js"></script>
+      <script src="static/js/bootstrap.bundle.min.js"></script>
+      <script src="static/js/jquery-3.0.0.min.js"></script>
+      <script src="static/js/plugin.js"></script>
+      <!-- sidebar -->
+      <script src="static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="static/js/custom.js"></script>
+      <!-- javascript --> 
+      <script src="static/js/owl.carousel.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script> 
+   </body>
+</html>
